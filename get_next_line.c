@@ -6,7 +6,7 @@
 /*   By: cacarval <cacarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 12:09:09 by cacarval          #+#    #+#             */
-/*   Updated: 2023/05/05 11:08:00 by cacarval         ###   ########.fr       */
+/*   Updated: 2023/05/08 11:50:36 by cacarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ char	*ft_read_and_join(int fd, char *temp)
 		bytes_read = read(fd, buffer, BUFFER_SIZE);
 		if (bytes_read == -1)
 		{
+			free(temp);
 			free(buffer);
 			return (NULL);
 		}

@@ -6,7 +6,7 @@
 /*   By: cacarval <cacarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 12:09:06 by cacarval          #+#    #+#             */
-/*   Updated: 2023/05/05 10:51:02 by cacarval         ###   ########.fr       */
+/*   Updated: 2023/05/05 15:29:13 by cacarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ char	*ft_strchr(char *s, int line_break)
 	i = 0;
 	if (!s)
 		return (0);
-	if (line_break == '\0')
-		return ((char *)&s[ft_strlen(s)]);
+	if (s[i] == '\0')
+		return (NULL);
 	while (s[i] != '\0')
 	{
 		if (s[i] == (char)line_break)
