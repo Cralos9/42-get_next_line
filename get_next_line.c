@@ -6,7 +6,7 @@
 /*   By: cacarval <cacarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 12:09:09 by cacarval          #+#    #+#             */
-/*   Updated: 2023/05/08 11:50:36 by cacarval         ###   ########.fr       */
+/*   Updated: 2023/05/09 14:43:39 by cacarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ char	*get_next_line(int fd)
 	static char	*temp;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
-		return (0);
+		return (NULL);
 	temp = ft_read_and_join(fd, temp);
 	if (!temp)
 		return (NULL);
