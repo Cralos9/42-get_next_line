@@ -6,7 +6,7 @@
 /*   By: cacarval <cacarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 12:09:06 by cacarval          #+#    #+#             */
-/*   Updated: 2023/05/05 15:29:13 by cacarval         ###   ########.fr       */
+/*   Updated: 2023/05/08 16:03:49 by cacarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,7 @@ char	*ft_strjoin(char *temp, char *buffer)
 	strjoin = malloc(sizeof(char) * (ft_strlen(temp) + ft_strlen(buffer) + 1));
 	if (!strjoin)
 		return (NULL);
-	if (temp)
-		while (temp[++i] != '\0')
+	while (temp[++i] != '\0')
 			strjoin[i] = temp[i];
 	while (buffer[j] != '\0')
 		strjoin[i++] = buffer[j++];

@@ -6,7 +6,7 @@
 /*   By: cacarval <cacarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 12:09:09 by cacarval          #+#    #+#             */
-/*   Updated: 2023/05/08 15:43:24 by cacarval         ###   ########.fr       */
+/*   Updated: 2023/05/09 10:02:38 by cacarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*ft_read_and_join(int fd, char *temp)
 	if (!buffer)
 		return (NULL);
 	bytes_read = 1;
-	while (!ft_strchr(temp, '\n') && bytes_read != 0)
+	while (!ft_strchr(temp, '\n') && bytes_read > 0)
 	{
 		bytes_read = read(fd, buffer, BUFFER_SIZE);
 		if (bytes_read == -1)
@@ -51,3 +51,25 @@ char	*get_next_line(int fd)
 	temp[fd] = ft_new_temp(temp[fd]);
 	return (line);
 }
+
+// #include <stdio.h>
+// #include <fcntl.h>
+// #include <stdlib.h>
+
+// int	main(void)
+// {
+// 	char	*line;
+// 	int		i;
+// 	int		fd1;
+// 	fd1 = open("tests/test.txt", O_RDONLY);
+// 	i = 1;
+// 	while (i < 7)
+// 	{
+// 		line = get_next_line(fd1);
+// 		printf("line [%02d]: %s", i, line);
+// 		free(line);
+// 		i++;
+// 	}
+//     close(fd1);
+// 	return (0);
+// }

@@ -6,7 +6,7 @@
 /*   By: cacarval <cacarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 12:09:06 by cacarval          #+#    #+#             */
-/*   Updated: 2023/05/05 12:45:41 by cacarval         ###   ########.fr       */
+/*   Updated: 2023/05/08 16:35:00 by cacarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,26 +17,22 @@ size_t	ft_strlen(char *s)
 	size_t	i;
 
 	i = 0;
-	if (!s)
-		return (0);
 	while (s[i] != '\0')
 		i++;
 	return (i);
 }
 
-char	*ft_strchr(char *s, int line_break)
+char	*ft_strchr(char *temp, int line_break)
 {
 	int	i;
 
 	i = 0;
-	if (!s)
+	if (!temp)
 		return (0);
-	if (line_break == '\0')
-		return ((char *)&s[ft_strlen(s)]);
-	while (s[i] != '\0')
+	while (temp[i] != '\0')
 	{
-		if (s[i] == (char)line_break)
-			return ((char *)&s[i]);
+		if (temp[i] == (char)line_break)
+			return ((char *)&temp[i]);
 		i++;
 	}
 	return (0);
@@ -57,15 +53,14 @@ char	*ft_strjoin(char *temp, char *buffer)
 	}
 	if (!temp || !buffer)
 		return (NULL);
-	strjoin = malloc(sizeof(char) * (ft_strlen(temp) + ft_strlen(buffer) + 1));
+	strjoin = malloc((ft_strlen(temp) + ft_strlen(buffer)) + 1);
 	if (!strjoin)
 		return (NULL);
-	if (temp)
-		while (temp[++i] != '\0')
+	while (temp[++i])
 			strjoin[i] = temp[i];
-	while (buffer[j] != '\0')
+	while (buffer[j])
 		strjoin[i++] = buffer[j++];
-	strjoin[ft_strlen(temp) + ft_strlen(buffer)] = '\0';
+	strjoin[i] = '\0';
 	free(temp);
 	return (strjoin);
 }
@@ -76,11 +71,14 @@ char	*ft_get_line(char *temp)
 	char	*str;
 
 	i = 0;
-	if (!temp[i])
+	if (temp[i] == 0)
 		return (NULL);
 	while (temp[i] && temp[i] != '\n')
 		i++;
-	str = malloc(sizeof(char) * (i + 2));
+	if (temp[i] == '\0')
+		str = malloc(sizeof(char) * (i + 1));
+	else
+		str = malloc(sizeof(char) * (i + 2));
 	if (!str)
 		return (NULL);
 	i = 0;
@@ -90,10 +88,7 @@ char	*ft_get_line(char *temp)
 		i++;
 	}
 	if (temp[i] == '\n')
-	{
-		str[i] = temp[i];
-		i++;
-	}
+		str[i++] = '\n';
 	str[i] = '\0';
 	return (str);
 }
